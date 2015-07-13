@@ -15,8 +15,8 @@ namespace JournalManager
 
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                url: "{controller}/{action}/{id}/{label}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional, label = UrlParameter.Optional }
             );
         }
     }
