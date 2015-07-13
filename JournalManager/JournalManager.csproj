@@ -1000,6 +1000,10 @@
     <Content Include="Scripts\lodash.underscore.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\npm.js" />
+    <Content Include="Scripts\offline\offline.js" />
+    <Content Include="Scripts\offline\offline.min.js" />
+    <Content Include="Scripts\offline\themes\offline-language-english.css" />
+    <Content Include="Scripts\offline\themes\offline-theme-chrome.css" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
