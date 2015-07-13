@@ -119,7 +119,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="images\homes\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -198,6 +197,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="images\homes\no-image-large.png" />
     <Content Include="images\loader.gif" />
     <Content Include="images\logo-sm.png" />
     <Content Include="images\main-lg.jpg" />
