@@ -1,5 +1,5 @@
 ﻿CACHE MANIFEST
-# 8.1.10
+# 1.0.0
 
 CACHE:
 /
@@ -14,7 +14,7 @@ CACHE:
 
 
 /Scripts/modernizr-2.8.3.js
-/Scripts/jquery-1.9.1.js
+/Scripts/jquery-2.1.4.js
 /Scripts/bootstrap.js
 /Scripts/respond.js
 /Scripts/angular.js
