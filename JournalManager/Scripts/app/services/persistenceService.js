@@ -9,7 +9,7 @@
 
                 self.persistenceType = 'remote';
                 
-                Offline.options = { checks: { xhr: { url: '/favicon.ico' } } };
+                //Offline.options = { checks: { xhr: { url: '/favicon.ico' } } };
                 Offline.check();
                 if (Offline.state === 'up')
                     self.action = remotePersistenceStrategy;
