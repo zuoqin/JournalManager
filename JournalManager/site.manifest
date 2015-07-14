@@ -1,5 +1,5 @@
 ﻿CACHE MANIFEST
-# 1.0.0
+# 1.0.1
 
 CACHE:
 /
@@ -23,7 +23,7 @@ CACHE:
 /Scripts/lodash.underscore.min.js
 /Scripts/uuid.js
 /Scripts/math.uuid.js
-/Scripts/offline/offline.min.js
+/Scripts/offline/offline.js
 
 
 /Scripts/app/app.js
