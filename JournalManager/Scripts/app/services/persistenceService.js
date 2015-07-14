@@ -36,7 +36,7 @@
 
                 self.getById = function(id) {
                     var deferred = $q.defer();
-                    if (Offline.state = 'up') {
+                    if (Offline.state === 'up') {
                         var remoteItem = {},
                             localItem = {};
                         self.getRemoteItem(id).then(function(rItem) {
