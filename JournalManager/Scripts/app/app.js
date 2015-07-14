@@ -10,22 +10,22 @@ angular.module('app', ['ngResource']).config(
             $provide.constant('_', window._);
             $provide.constant('localStorage', window.localStorage);
             $provide.constant('Offline', window.Offline);
-            $provide.value('nullHome', {
+            $provide.value('nullItem', {
                 id: '',
                 insertDate: new Date(-8640000000000000),
                 modifiedDate: new Date(-8640000000000000)
             });
             $provide.value('dbModel', {
-                name: 'codedhomes',
+                name: 'journalitems',
                 version: '1',
                 instance: null,
-                objectStoreName: 'homes',
-                keyName: 'id',
+                objectStoreName: 'items',
+                keyName: 'ItemId',
                 upgrade: function(e) {
                     var db = e.target.result;
-                    if (!db.objectStoreNames.contains('homes')) {
-                        db.createObjectStore('homes', {
-                            keyPath: 'id'
+                    if (!db.objectStoreNames.contains('items')) {
+                        db.createObjectStore('items', {
+                            keyPath: 'ItemId'
                         });
                     }
                 }
