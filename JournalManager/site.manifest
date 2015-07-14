@@ -1,11 +1,11 @@
 ﻿CACHE MANIFEST
-# 1.0.1
+# 1.0.2
 
 CACHE:
 /
-/homes
-/homes/new
-/homes/edit
+/items
+/items/new
+/items/edit
 
 /Content/bootstrap.min.css
 /Content/site.css
