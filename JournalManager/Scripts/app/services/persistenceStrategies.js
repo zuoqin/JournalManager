@@ -42,25 +42,25 @@
 
     app.factory('localPersistenceStrategy',
     [
-        '$q', 'localDBService', 'nullHome', 'dbModel',
-        function ($q, localDBService, nullHome, dbModel) {
+        '$q', 'localDBService', 'nullItem', 'dbModel',
+        function ($q, localDBService, nullItem, dbModel) {
             var svc = {
                 dbModel: dbModel,
                 localDBService : localDBService,
-                save: function (home) {
+                save: function (item) {
                     var deferred = $q.defer();
                     localDBService.open(svc.dbModel).then(function(e) {
-                        var id = home.id;
+                        var id = item.ItemId;
                         if (id === null || id === undefined) {
-                            localDBService.insert(svc.dbModel.objectStoreName, home, 'id')
+                            localDBService.insert(svc.dbModel.objectStoreName, item, 'ItemId')
                                 .then(deferred.resolve, deferred.reject);
                         } else {
                             svc.exists(id).then(function(doesExist) {
                                 if (doesExist) {
-                                    localDBService.update(svc.dbModel.objectStoreName, home, id)
+                                    localDBService.update(svc.dbModel.objectStoreName, item, id)
                                         .then(deferred.resolve, deferred.reject);
                                 } else {
-                                    localDBService.insert(svc.dbModel.objectStoreName, home, 'id')
+                                    localDBService.insert(svc.dbModel.objectStoreName, item, 'id')
                                         .then(deferred.resolve, deferred.reject);
                                 }
                             }, deferred.reject);
@@ -87,9 +87,9 @@
                 exists: function(id) {
                     var deferred = $q.defer();
                     svc.getById(id).then(function (_Event) {
-                        var home = _Event.srcElement.result;
-                        if (home != undefined) {
-                            deferred.resolve(home.id === id);
+                        var item = _Event.srcElement.result;
+                        if (item != undefined) {
+                            deferred.resolve(item.ItemId === id);
                         } else {
                             deferred.resolve(false);
                         }
