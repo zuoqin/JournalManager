@@ -49,7 +49,7 @@
                 $scope.showFillOutFormMessage = !saveItem;
                 if (saveItem) {
                     var item = $scope.item;
-                    item.id = id;
+                    item.ItemId = id;
                     persistenceService.action.save(item).then(
                         function(result) {
                             $scope.showSuccessMessage = true;
