@@ -18,7 +18,7 @@
             syncService.monitorDown().then(
                 function (result) {
                     $timeout(function () {
-                        $scope.hasLocalDataToSync = result;
+                        $scope.hasLocalDataToSync = false;//result;
                     });
                 },
                 function (error) {
