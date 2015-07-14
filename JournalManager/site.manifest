@@ -33,7 +33,7 @@ CACHE:
 /Scripts/app/services/persistenceStrategies.js
 /Scripts/app/services/syncService.js
 /Scripts/app/controllers/syncController.js
-/Scripts/app/controllers/homesController.js
+/Scripts/app/controllers/itemsController.js
 /Scripts/app/controllers/editController.js
 
 /images/loader.gif
