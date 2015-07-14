@@ -7,30 +7,30 @@
         '$http', '$q',
         function($http, $q) {
             var svc = {
-                save: function(home) {
+                save: function(item) {
                     var deferred = $q.defer();
-                    $http.post('/api/homes', home)
+                    $http.post('/api/Item', item)
                         .success(deferred.resolve)
                         .error(deferred.reject);
                     return deferred.promise;
                 },
                 getAll: function() {
                     var deferred = $q.defer();
-                    $http.get('/api/homes')
+                    $http.get('/api/Item')
                         .success(deferred.resolve)
                         .error(deferred.reject);
                     return deferred.promise;
                 } ,
                 getById: function(id) {
                     var deferred = $q.defer();
-                    $http.get('/api/homes/' + id)
+                    $http.get('/api/Item/' + id)
                         .success(deferred.resolve)
                         .error(deferred.reject);
                     return deferred.promise;
                 } ,
                 'delete': function (id) {
                     var deferred = $q.defer();
-                    $http.delete('/api/homes/' + id)
+                    $http.delete('/api/Item/' + id)
                         .success(deferred.resolve)
                         .error(deferred.reject);
                     return deferred.promise;

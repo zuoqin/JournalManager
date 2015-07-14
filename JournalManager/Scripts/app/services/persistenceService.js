@@ -20,31 +20,31 @@
                 });
 
 
-                self.getRemoteHome = function(id) {
+                self.getRemoteItem = function(id) {
                     return remotePersistenceStrategy.getById(id);
                 };
-                self.getLocalHome = function (id) {
+                self.getLocalItem = function (id) {
                     return localPersistenceStrategy.getById(id);
                 };
 
                 self.getById = function(id) {
                     var deferred = $q.defer();
                     if (Offline.state = 'up') {
-                        var remoteHome = {},
-                            localHome = {};
-                        self.getRemoteHome(id).then(function(rHome) {
-                            remoteHome = rHome;
-                            self.getLocalHome(id).then(function(lHome) {
-                                localHome = lHome;
-                                if (localHome.modifiedDate > (new Date(remoteHome.modifiedDate))) {
-                                    deferred.resolve(localHome);
+                        var remoteItem = {},
+                            localItem = {};
+                        self.getRemoteItem(id).then(function(rItem) {
+                            remoteItem = rItem;
+                            self.getLocalItem(id).then(function(lItem) {
+                                localItem = lItem;
+                                if (localItem.modifiedDate > (new Date(remoteItem.modifiedDate))) {
+                                    deferred.resolve(localItem);
                                 } else {
-                                    deferred.resolve(remoteHome);
+                                    deferred.resolve(remoteItem);
                                 }
                             }, deferred.reject);
                         }, deferred.reject);
                     } else {
-                        self.getLocalHome(id).then(deferred.resolve, deferred.reject);
+                        self.getLocalItem(id).then(deferred.resolve, deferred.reject);
                     }
                     return deferred.promise;
                 };

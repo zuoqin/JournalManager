@@ -8,18 +8,18 @@
             $scope.showSuccessMessage = false;
             $scope.showFillOutFormMessage = false;
             $scope.isOnline = true;
-            $scope.item = {};
+            $scope.home = {};
 
             var parts = $location.absUrl().split('/');
-            var id = parts[parts.length - 1];
+            var id = parts[parts.length - 2];
             var uuidLength = 36;
             if (id.length != uuidLength) {
                 id = null;
             }
             if (id != null) {
                 persistenceService.getById(id).then(
-                    function(item) {
-                        $scope.item = item;
+                    function(home) {
+                        $scope.home = home;
                     },
                     function(error) {
                         $scope.error = error;
@@ -30,7 +30,7 @@
                 window.location = '/';
             };
 
-            var hasAnItemToSave = function() {
+            var hasAHomeToSave = function() {
                 var hasValue = function(value) {
                     if (typeof value === 'string') {
                         return value.length > 0;
@@ -39,18 +39,19 @@
                 };
 
                 var returnValue =
-                    hasValue($scope.item.Introduction)
-                        && hasValue($scope.item.Contents);
+                    hasValue($scope.home.streetAddress)
+                        && hasValue($scope.home.city)
+                        && hasValue($scope.home.price);
                 return returnValue;
             };
 
             $scope.save = function() {
-                var saveItem = hasAnItemToSave();
-                $scope.showFillOutFormMessage = !saveItem;
-                if (saveItem) {
-                    var item = $scope.item;
-                    item.id = id;
-                    persistenceService.action.save(item).then(
+                var saveHome = hasAHomeToSave();
+                $scope.showFillOutFormMessage = !saveHome;
+                if (saveHome) {
+                    var home = $scope.home;
+                    home.id = id;
+                    persistenceService.action.save(home).then(
                         function(result) {
                             $scope.showSuccessMessage = true;
                             $scope.showErrorMessage = false;
@@ -62,6 +63,7 @@
                 }
 
             }
+            //$scope.cancel = 
 
             Offline.on('confirmed-down', function () {
                 $scope.$apply(function () {

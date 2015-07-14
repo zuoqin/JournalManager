@@ -1,9 +1,12 @@
 ﻿<!DOCTYPE html>
+<!--
 <html manifest="/site.manifest">
+-->
+<html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Coded Homes</title>
+    <title>@ViewBag.Title - Journal Items</title>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Scripts/offline/themes/offline-theme-chrome.css" rel="stylesheet" />
     <link href="~/Scripts/offline/themes/offline-language-english.css" rel="stylesheet" />
@@ -20,12 +23,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="/"><img src="/images/logo-sm.png" class="logo" alt="Coded Homes" title="Coded Homes" /></a>
+                <a href="/"><img src="/images/logo-sm.png" class="logo" alt="Journal Items" title="Journal Items" /></a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="/homes">Homes List</a></li>
-                    <li><a href="/homes/new">New Home</a></li>
+                    <li><a href="/items">Items List</a></li>
+                    <li><a href="/items/new">New Item</a></li>
                 </ul>
             </div>
         </div>
@@ -34,7 +37,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Coded Homes</p>
+            <p>&copy; @DateTime.Now.Year - Journal Items</p>
         </footer>
     </div>
     <div id="sync-container" class="alert-info"
@@ -64,7 +67,6 @@
     -->
     <script src="~/Scripts/app/app.js" type="text/javascript"></script>
 
-    <script src="~/Scripts/app/services/fakeServerService.js" type="text/javascript"></script>
     <script src="~/Scripts/app/services/localDBService.js" type="text/javascript"></script>
     <script src="~/Scripts/app/services/persistenceService.js" type="text/javascript"></script>
     <script src="~/Scripts/app/services/persistenceStrategies.js" type="text/javascript"></script>

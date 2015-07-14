@@ -125,7 +125,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -162,7 +161,11 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomesController.cs" />
+    <Compile Include="Controllers\ItemController.cs" />
+    <Compile Include="Controllers\ItemsController.cs" />
     <Compile Include="Controllers\ManifestController.cs" />
+    <Compile Include="Controllers\TopicController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -181,6 +184,31 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Item.cs">
+      <DependentUpon>Journal01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ItemDTO.cs" />
+    <Compile Include="Models\Journal01.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Journal01.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Journal01.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Journal01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Journal01.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Journal01.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Topic.cs">
+      <DependentUpon>Journal01.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User.cs">
+      <DependentUpon>Journal01.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -249,9 +277,8 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\app\app.js" />
     <Content Include="Scripts\app\controllers\editController.js" />
-    <Content Include="Scripts\app\controllers\homesController.js" />
+    <Content Include="Scripts\app\controllers\itemsController.js" />
     <Content Include="Scripts\app\controllers\syncController.js" />
-    <Content Include="Scripts\app\services\fakeServerService.js" />
     <Content Include="Scripts\app\services\localDBService.js" />
     <Content Include="Scripts\app\services\persistenceService.js" />
     <Content Include="Scripts\app\services\persistenceStrategies.js" />
@@ -284,6 +311,23 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <EntityDeploy Include="Models\Journal01.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Journal01.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Journal01.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Journal01.edmx</DependentUpon>
+      <LastGenOutput>Journal01.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Journal01.edmx.diagram">
+      <DependentUpon>Journal01.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\Journal01.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Journal01.edmx</DependentUpon>
+      <LastGenOutput>Journal01.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Icon.png" />
@@ -1068,6 +1112,8 @@
     <Content Include="site.manifest" />
     <Content Include="Views\Homes\Edit.cshtml" />
     <Content Include="Views\Homes\Index.cshtml" />
+    <Content Include="Views\Items\Index.cshtml" />
+    <Content Include="Views\Items\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

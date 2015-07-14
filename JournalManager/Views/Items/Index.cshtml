@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Items List";
+}
+
+@section scripts {
+    <script src="~/Scripts/app/controllers/itemsController.js"></script>
+}
+
+<section data-ng-controller="itemsController" data-ng-cloak>
+    <div data-ng-hide="showList">
+        <img src="/images/loader.gif" alt="loading..." title="loading..." />
+    </div>
+    <div class="container" data-ng-show="showList">
+        <div class="alert alert-danger" data-ng-show="error">{{error}}</div>
+        <div class="alert alert-info" data-ng-show="showEmptyListMessage">
+            <p>
+                There are no items available to list at this time.
+                <a href="/items/new">Perhaps you would like enter a new one?</a>
+            </p>
+        </div>
+        <div class="row home-list-item" data-ng-repeat="item in items">
+            <div class="col-sm-8">
+                <div class="lead">{{item.Introduction}}</div>
+                <div class="lead">{{item.Contents}}</div>
+                <button class="btn btn-link" data-ng-click="delete($index)">Delete</button>
+                <a data-ng-href="/items/edit/{{item.ItemId}}" class="btn btn-default">Edit</a>
+            </div>
+        </div>
+    </div>
+</section>
