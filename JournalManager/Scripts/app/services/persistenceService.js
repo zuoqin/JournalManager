@@ -8,7 +8,14 @@
                 var self = this;
 
                 self.persistenceType = 'remote';
-                self.action = remotePersistenceStrategy;
+                
+                Offline.options = { checks: { xhr: { url: '/favicon.ico' } } };
+                Offline.check();
+                if (Offline.state === 'up')
+                    self.action = remotePersistenceStrategy;
+                else
+                    self.action = localPersistenceStrategy;
+                
 
                 Offline.on('confirmed-down', function() {
                     self.action = localPersistenceStrategy;
