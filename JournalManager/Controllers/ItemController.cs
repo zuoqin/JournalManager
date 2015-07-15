@@ -112,8 +112,22 @@ namespace JournalManager.Controllers
         [ResponseType(typeof(Item))]
         public async Task<IHttpActionResult> PostItem(Item item)
         {
+            if (item.Topic == null)
+            {
+                item.Topic = await db.Topics.Where(e => e.TopicId == item.TopicId).FirstOrDefaultAsync();
+            }
+            if (item.User == null)
+            {
+                item.User = await db.Users.Where(e => e.UserId == item.UserId).FirstOrDefaultAsync();
+            }
+            Guid zeroGuid = new Guid("00000000-0000-0000-0000-000000000000");
+            if (item.ItemId.CompareTo(zeroGuid) == 0)
+            {
+                item.ItemId = Guid.NewGuid();
+            }
             if (!ModelState.IsValid)
             {
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
                 return BadRequest(ModelState);
             }
             Item theItem = await db.Items.Where(e => e.ItemId == item.ItemId).FirstOrDefaultAsync();
@@ -141,11 +155,6 @@ namespace JournalManager.Controllers
             }
             else
             {
-                Guid zeroGuid = new Guid("00000000-0000-0000-0000-000000000000");
-                if (item.ItemId.CompareTo(zeroGuid) == 0)
-                {
-                    item.ItemId = Guid.NewGuid();
-                }
                 if (item.insertDate == null || item.insertDate.Ticks == 0)
                 {
                     item.insertDate = DateTime.Now;
@@ -154,8 +163,13 @@ namespace JournalManager.Controllers
                 {
                     item.modifiedDate = DateTime.Now;
                 }
-                item.TopicId = 1;
-                item.UserId = 1;
+                if(item.TopicId == 0)
+                    item.TopicId = 1;
+                if (item.UserId == 0)
+                {
+                    item.UserId = 1;
+                }
+                
                 db.Items.Add(item);
             }
             
