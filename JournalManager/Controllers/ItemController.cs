@@ -112,6 +112,10 @@ namespace JournalManager.Controllers
         [ResponseType(typeof(Item))]
         public async Task<IHttpActionResult> PostItem(Item item)
         {
+            PropertyInfo[] properties1;
+            PropertyInfo[] properties2;
+            properties1 = typeof(ItemDTO).GetProperties();
+            properties2 = typeof(Item).GetProperties();
             if (item.Topic == null)
             {
                 item.Topic = await db.Topics.Where(e => e.TopicId == item.TopicId).FirstOrDefaultAsync();
@@ -133,11 +137,7 @@ namespace JournalManager.Controllers
             Item theItem = await db.Items.Where(e => e.ItemId == item.ItemId).FirstOrDefaultAsync();
             if (theItem != null)
             {
-                PropertyInfo[] properties1;
-                PropertyInfo[] properties2;
                 db.Entry(theItem).State = EntityState.Modified;
-                properties1 = typeof(ItemDTO).GetProperties();
-                properties2 = typeof(Item).GetProperties();
                 foreach (PropertyInfo property1 in properties1)
                 {
                     PropertyInfo theProperty = Array.Find(properties2, p => p.Name.CompareTo(property1.Name) == 0);
@@ -189,8 +189,22 @@ namespace JournalManager.Controllers
                     throw;
                 }
             }
+            properties1 = typeof(ItemDTO).GetProperties();
+            properties2 = typeof(Item).GetProperties();
 
-            return Ok(item); //CreatedAtRoute("DefaultApi", new { id = item.ItemId }, item);
+            ItemDTO theItemDto = new ItemDTO();
+            foreach (PropertyInfo property1 in properties1)
+            {
+                PropertyInfo theProperty = Array.Find(properties2, p => p.Name.CompareTo(property1.Name) == 0);
+                if (theProperty != null)
+                {
+                    var value = theProperty.GetValue(item);
+                    property1.SetValue(theItemDto, value);
+                }
+            }
+
+
+            return Ok(theItemDto); //CreatedAtRoute("DefaultApi", new { id = item.ItemId }, item);
         }
 
         // DELETE api/Item/5
