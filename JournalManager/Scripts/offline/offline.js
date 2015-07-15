@@ -13,8 +13,9 @@
   }, Offline = {}, null == Offline.options && (Offline.options = {}), defaultOptions = {
     checks:{
       xhr:{
-        url:function() {
-          return "/favicon.ico?_=" + Math.floor(1e9 * Math.random());
+          url: function () {
+              return "/favicon.ico";
+              //return "/favicon.ico?_=" + Math.floor(1e9 * Math.random());
         },
         timeout:5e3
       },
