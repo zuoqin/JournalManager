@@ -23,7 +23,10 @@ namespace JournalManager.Controllers
         {
             return View();
         }
-
+        public ActionResult ViewItem(string id)
+        {
+            return View();
+        }
     
     }
 }

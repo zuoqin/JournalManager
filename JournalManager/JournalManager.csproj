@@ -279,6 +279,7 @@
     <Content Include="Scripts\app\controllers\editController.js" />
     <Content Include="Scripts\app\controllers\itemsController.js" />
     <Content Include="Scripts\app\controllers\syncController.js" />
+    <Content Include="Scripts\app\controllers\viewController.js" />
     <Content Include="Scripts\app\services\localDBService.js" />
     <Content Include="Scripts\app\services\persistenceService.js" />
     <Content Include="Scripts\app\services\persistenceStrategies.js" />
@@ -1114,6 +1115,7 @@
     <Content Include="Views\Homes\Index.cshtml" />
     <Content Include="Views\Items\Index.cshtml" />
     <Content Include="Views\Items\Edit.cshtml" />
+    <Content Include="Views\Items\ViewItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

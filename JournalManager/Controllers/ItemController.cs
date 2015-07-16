@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -178,15 +180,16 @@ namespace JournalManager.Controllers
             {
                 await db.SaveChangesAsync();
             }
-            catch (Exception theException)
+            catch (DbEntityValidationException dbEx)
             {
-                if (ItemExists(item.ItemId))
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
                 {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        Trace.TraceInformation("Property: {0} Error: {1}",
+                                                validationError.PropertyName,
+                                                validationError.ErrorMessage);
+                    }
                 }
             }
             properties1 = typeof(ItemDTO).GetProperties();

@@ -13,5 +13,6 @@ namespace JournalManager.Models
         public string Title { get; set; }
         public string Introduction { get; set; }
         public string Contents { get; set; }
+        public DateTime modifiedDate { get; set; }
     }
 }

@@ -12,9 +12,9 @@
           <Property Name="ItemId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="TopicId" Type="int" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
-          <Property Name="Title" Type="nvarchar" MaxLength="1000" Nullable="false"/>
+          <Property Name="Title" Type="nvarchar" MaxLength="1000" Nullable="false" />
           <Property Name="Introduction" Type="nvarchar" MaxLength="1000" />
-          <Property Name="Contents" Type="nvarchar" MaxLength="4000" />
+          <Property Name="Contents" Type="nvarchar(max)" />
           <Property Name="insertDate" Type="datetime" Nullable="false" />
           <Property Name="modifiedDate" Type="datetime" Nullable="false" />
         </EntityType>
@@ -83,7 +83,7 @@
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="Title" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Introduction" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="Contents" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="Contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Topic" Relationship="Self.FK__Items__Topics" FromRole="Items" ToRole="Topics" />
           <NavigationProperty Name="User" Relationship="Self.FK__Items__Users" FromRole="Items" ToRole="Users" />
           <Property Name="insertDate" Type="DateTime" Nullable="false" Precision="3" />

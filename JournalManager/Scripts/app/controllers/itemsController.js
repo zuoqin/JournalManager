@@ -3,13 +3,29 @@
     var app = angular.module('app');
     app.controller('itemsController',
     [
-        '$scope', '_', 'persistenceService', 'Offline',
-        function($scope, _, persistenceService, Offline) {
+        '$scope','$sce', '_', 'persistenceService', 'Offline',
+        function($scope, $sce, _, persistenceService, Offline) {
             $scope.showList = false;
+            $scope.items = [];
             var getData = function() {
                 persistenceService.action.getAll().then(
-                    function(items) {
-                        $scope.items = items;
+                    function (items) {
+
+
+                        items.forEach(function(item) {
+                            $scope.items.push({
+                                ItemId: item.ItemId,
+                                Title: $sce.trustAsHtml(item.Title),
+                                Introduction: $sce.trustAsHtml(item.Introduction),
+                                modifiedDate: item.modifiedDate,
+                                TopicId: item.TopicId,
+                                UserId: item.UserId,
+                                Contents: $sce.trustAsHtml(item.Contents)
+                            });
+                        });
+
+
+                        //$scope.items = items;
                         $scope.showList = true;
                         $scope.showEmptyListMessage = (items.length === 0);
                     },
@@ -17,9 +33,9 @@
                         $scope.error = error;
                     });
             };
-            var lazyGetData = _.debounce(getData, 50);
-            Offline.on('confirmed-down', lazyGetData);
-            Offline.on('confirmed-up', lazyGetData);
+            var lazyGetData = _.debounce(getData, 5000);
+            //Offline.on('confirmed-down', lazyGetData);
+            //Offline.on('confirmed-up', lazyGetData);
             lazyGetData();
 
             $scope.delete = function(index) {
