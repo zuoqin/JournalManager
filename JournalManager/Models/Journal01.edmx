@@ -12,6 +12,7 @@
           <Property Name="ItemId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="TopicId" Type="int" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="1000" Nullable="false"/>
           <Property Name="Introduction" Type="nvarchar" MaxLength="1000" />
           <Property Name="Contents" Type="nvarchar" MaxLength="4000" />
           <Property Name="insertDate" Type="datetime" Nullable="false" />
@@ -80,6 +81,7 @@
           <Property Name="ItemId" Type="Guid" Nullable="false" />
           <Property Name="TopicId" Type="Int32" Nullable="false" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Introduction" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
           <Property Name="Contents" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Topic" Relationship="Self.FK__Items__Topics" FromRole="Items" ToRole="Topics" />
@@ -155,6 +157,7 @@
                 <ScalarProperty Name="ItemId" ColumnName="ItemId" />
                 <ScalarProperty Name="TopicId" ColumnName="TopicId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Introduction" ColumnName="Introduction" />
                 <ScalarProperty Name="Contents" ColumnName="Contents" />
               </MappingFragment>

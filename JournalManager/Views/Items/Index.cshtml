@@ -20,6 +20,7 @@
         </div>
         <div class="row home-list-item" data-ng-repeat="item in items">
             <div class="col-sm-8">
+                <div class="lead">{{item.Title}}</div>
                 <div class="lead">{{item.Introduction}}</div>
                 <div class="lead">{{item.Contents}}</div>
                 <button class="btn btn-link" data-ng-click="delete($index)">Delete</button>
