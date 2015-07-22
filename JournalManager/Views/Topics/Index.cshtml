@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "Topics List";
+}
+
+@section scripts {
+    <script src="~/Scripts/app/controllers/topicsController.js"></script>
+}
+
+<section data-ng-controller="topicsController" data-ng-cloak>
+    <div data-ng-hide="showList">
+        <img src="/images/loader.gif" alt="loading..." title="loading..." />
+    </div>
+    <div class="container" data-ng-show="showList">
+        <div class="alert alert-danger" data-ng-show="error">{{error}}</div>
+        <div class="alert alert-info" data-ng-show="showEmptyListMessage">
+            <p>
+                There are no topics available to list at this time.
+                <a href="/topics/new">Perhaps you would like enter a new one?</a>
+            </p>
+        </div>
+        <div class="row home-list-item" data-ng-repeat="topic in topics">
+            <!--
+            <div class="col-sm-8">
+                <div class="lead">{{item.Title}}</div>
+                <div class="lead">{{item.Introduction}}</div>
+                <div class="lead">{{item.Contents}}</div>
+                <button class="btn btn-link" data-ng-click="delete($index)">Delete</button>
+                <a data-ng-href="/items/edit/{{item.ItemId}}" class="btn btn-default">Edit</a>
+            </div>
+            -->
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <!--
+                    <h3 class="panel-title">
+                    -->
+                    <a data-ng-href="/topics/ViewTopic/{{topic.TopicId}}" class="panel-title">{{topic.Description}}</a>
+
+                    <!--
+                    </h3>
+                    -->
+                </div>
+            <!--
+            <div class="panel-body">
+                <p ng-bind-html="item.Introduction">{{item.Introduction}}</p>
+                <p>
+                    on {{item.modifiedDate}}
+                </p>
+                <button class="btn btn-link" data-ng-click="delete($index)">Delete</button>
+                <a data-ng-href="/items/edit/{{item.ItemId}}" class="btn btn-default">Edit</a>
+            </div>
+            -->
+            </div>
+
+
+        </div>
+    </div>
+</section>

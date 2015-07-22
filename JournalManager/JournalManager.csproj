@@ -165,6 +165,7 @@
     <Compile Include="Controllers\ItemsController.cs" />
     <Compile Include="Controllers\ManifestController.cs" />
     <Compile Include="Controllers\TopicController.cs" />
+    <Compile Include="Controllers\TopicsController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -188,6 +189,7 @@
     <Compile Include="Models\Item.cs">
       <DependentUpon>Journal01.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TopicDTO.cs" />
     <Compile Include="Models\ItemDTO.cs" />
     <Compile Include="Models\Journal01.Context.cs">
       <AutoGen>True</AutoGen>
@@ -277,13 +279,16 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\app\app.js" />
     <Content Include="Scripts\app\controllers\editController.js" />
+    <Content Include="Scripts\app\controllers\topicsController.js" />
     <Content Include="Scripts\app\controllers\itemsController.js" />
     <Content Include="Scripts\app\controllers\syncController.js" />
     <Content Include="Scripts\app\controllers\viewController.js" />
+    <Content Include="Scripts\app\services\authService.js" />
     <Content Include="Scripts\app\services\localDBService.js" />
     <Content Include="Scripts\app\services\persistenceService.js" />
     <Content Include="Scripts\app\services\persistenceStrategies.js" />
     <Content Include="Scripts\app\services\syncService.js" />
+    <Content Include="Scripts\app\services\topicsService.js" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\angular-touch.min.js.map" />
     <Content Include="Scripts\angular-sanitize.min.js.map" />
@@ -1116,6 +1121,7 @@
     <Content Include="Views\Items\Index.cshtml" />
     <Content Include="Views\Items\Edit.cshtml" />
     <Content Include="Views\Items\ViewItem.cshtml" />
+    <Content Include="Views\Topics\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
