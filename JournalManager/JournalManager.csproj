@@ -159,6 +159,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomesController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
@@ -168,6 +169,7 @@
     <Compile Include="Controllers\TopicsController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Filters\SecureResourceAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -279,11 +281,13 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\app\app.js" />
     <Content Include="Scripts\app\controllers\editController.js" />
+    <Content Include="Scripts\app\controllers\loginController.js" />
     <Content Include="Scripts\app\controllers\topicsController.js" />
     <Content Include="Scripts\app\controllers\itemsController.js" />
     <Content Include="Scripts\app\controllers\syncController.js" />
     <Content Include="Scripts\app\controllers\viewController.js" />
-    <Content Include="Scripts\app\services\authService.js" />
+    <Content Include="Scripts\app\services\authenticationService.js" />
+    <Content Include="Scripts\app\services\base64Service.js" />
     <Content Include="Scripts\app\services\localDBService.js" />
     <Content Include="Scripts\app\services\persistenceService.js" />
     <Content Include="Scripts\app\services\persistenceStrategies.js" />
@@ -1122,6 +1126,7 @@
     <Content Include="Views\Items\Edit.cshtml" />
     <Content Include="Views\Items\ViewItem.cshtml" />
     <Content Include="Views\Topics\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

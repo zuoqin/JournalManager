@@ -12,6 +12,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using JournalManager.Filters;
 using JournalManager.Models;
 
 namespace JournalManager.Controllers
@@ -21,7 +22,7 @@ namespace JournalManager.Controllers
         private JournalDBEntities db = new JournalDBEntities();
 
         // GET api/Item
-        //public IQueryable<Item> GetItems()
+        [SecureResource]
         public async Task<IHttpActionResult> GetItems()
         {
             PropertyInfo[] properties1;
@@ -50,6 +51,7 @@ namespace JournalManager.Controllers
         }
 
         // GET api/Item/5
+        [SecureResource]
         [ResponseType(typeof(Item))]
         public async Task<IHttpActionResult> GetItem(Guid id)
         {
@@ -77,6 +79,7 @@ namespace JournalManager.Controllers
         }
 
         // PUT api/Item/5
+        [SecureResource]
         public async Task<IHttpActionResult> PutItem(Guid id, Item item)
         {
             if (!ModelState.IsValid)
@@ -112,6 +115,7 @@ namespace JournalManager.Controllers
 
         // POST api/Item
         [ResponseType(typeof(Item))]
+        [SecureResource]
         public async Task<IHttpActionResult> PostItem(Item item)
         {
             PropertyInfo[] properties1;
@@ -212,6 +216,7 @@ namespace JournalManager.Controllers
 
         // DELETE api/Item/5
         [ResponseType(typeof(Item))]
+        [SecureResource]
         public async Task<IHttpActionResult> DeleteItem(Guid id)
         {
             Item item = await db.Items.FindAsync(id);

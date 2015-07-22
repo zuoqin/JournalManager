@@ -10,6 +10,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using JournalManager.Filters;
 using JournalManager.Models;
 
 namespace JournalManager.Controllers
@@ -19,6 +20,7 @@ namespace JournalManager.Controllers
         private JournalDBEntities db = new JournalDBEntities();
 
         // GET api/Topic
+        [SecureResource]
         public async Task<IHttpActionResult> GetTopics()
         {
             List<TopicDTO> theTopicsData = new List<TopicDTO>();
@@ -60,6 +62,7 @@ namespace JournalManager.Controllers
 
         // GET api/Topic/5
         [ResponseType(typeof(Topic))]
+        [SecureResource]
         public async Task<IHttpActionResult> GetTopic(int id)
         {
             Topic topic = await db.Topics.FindAsync(id);
@@ -72,6 +75,7 @@ namespace JournalManager.Controllers
         }
 
         // PUT api/Topic/5
+        [SecureResource]
         public async Task<IHttpActionResult> PutTopic(int id, Topic topic)
         {
             if (!ModelState.IsValid)
@@ -107,6 +111,7 @@ namespace JournalManager.Controllers
 
         // POST api/Topic
         [ResponseType(typeof(Topic))]
+        [SecureResource]
         public async Task<IHttpActionResult> PostTopic(Topic topic)
         {
             if (!ModelState.IsValid)
@@ -137,6 +142,7 @@ namespace JournalManager.Controllers
 
         // DELETE api/Topic/5
         [ResponseType(typeof(Topic))]
+        [SecureResource]
         public async Task<IHttpActionResult> DeleteTopic(int id)
         {
             Topic topic = await db.Topics.FindAsync(id);

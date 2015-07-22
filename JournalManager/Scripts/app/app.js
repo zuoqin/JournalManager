@@ -3,7 +3,7 @@ window.IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || 
 window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange
 
 
-angular.module('app', ['ngResource']).config(
+angular.module('app', ['ngResource', 'ngCookies']).config(
     [
         '$provide', function($provide) {
             $provide.constant('indexedDB', window.indexedDB);

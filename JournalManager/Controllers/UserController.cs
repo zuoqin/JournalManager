@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using JournalManager.Filters;
 using JournalManager.Models;
 
 namespace JournalManager.Controllers
@@ -18,12 +19,14 @@ namespace JournalManager.Controllers
         private JournalDBEntities db = new JournalDBEntities();
 
         // GET api/User
+        [SecureResource]
         public IQueryable<User> GetUsers()
         {
             return db.Users;
         }
 
         // GET api/User/5
+        [SecureResource]
         [ResponseType(typeof(User))]
         public async Task<IHttpActionResult> GetUser(int id)
         {
@@ -37,6 +40,7 @@ namespace JournalManager.Controllers
         }
 
         // PUT api/User/5
+        [SecureResource]
         public async Task<IHttpActionResult> PutUser(int id, User user)
         {
             if (!ModelState.IsValid)
@@ -72,6 +76,7 @@ namespace JournalManager.Controllers
 
         // POST api/User
         [ResponseType(typeof(User))]
+        [SecureResource]
         public async Task<IHttpActionResult> PostUser(User user)
         {
             if (!ModelState.IsValid)

@@ -19,6 +19,7 @@ CACHE:
 /Scripts/respond.js
 /Scripts/angular.js
 /Scripts/angular-resource.js
+/Scripts/angular-cookies.js
 /Scripts/angular-mocks.js
 /Scripts/lodash.underscore.min.js
 /Scripts/uuid.js
@@ -33,11 +34,14 @@ CACHE:
 /Scripts/app/services/persistenceStrategies.js
 /Scripts/app/services/topicsService.js
 /Scripts/app/services/syncService.js
+/Scripts/app/services/base64Service.js
+/Scripts/app/services/authenticationService.js
 /Scripts/app/controllers/syncController.js
 /Scripts/app/controllers/itemsController.js
 /Scripts/app/controllers/topicsController.js
 /Scripts/app/controllers/editController.js
 /Scripts/app/controllers/viewController.js
+/Scripts/app/controllers/loginController.js
 
 /images/loader.gif
 /images/logo-sm.png
