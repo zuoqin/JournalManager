@@ -44,7 +44,11 @@
         $scope.logout = function () {
             $scope.dataLoading = false;
             $scope.isLoggedIn = false;
-            authenticationService.ClearCredentials();
+            
+            $scope.items = [];
+            $scope.topics = [];
+            authenticationService.logout();
+            window.location.href = "/";
         };
         }]);
 }());

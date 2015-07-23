@@ -37,14 +37,15 @@
             </ul>
         </nav>
     </div>
-    <div class="container">
+    <div class="container" data-ng-show="isLoggedIn"
+         data-ng-controller="loginController">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="/"><img src="/images/logo-sm.png" class="logo" alt="Journal Items" title="Journal Items"/></a>
+            <a href="/"><img src="/images/logo-sm.png" class="logo" alt="Journal Items" title="Journal Items" /></a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">

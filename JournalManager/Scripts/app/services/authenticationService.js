@@ -6,7 +6,9 @@
             'Base64', '$http', '$cookies', '$rootScope', '$timeout', '$window',
             function (Base64, $http, $cookies, $rootScope, $timeout, $window) {
                 var service = {};
-
+                service.logout = function() {
+                    this.ClearCredentials();
+                };
                 service.Login = function (username, password, callback) {
 
                     /* Dummy authentication for testing, uses $timeout to simulate api call
