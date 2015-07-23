@@ -4,17 +4,19 @@
 
     app.factory('remotePersistenceStrategy',
     [
-        '$http', '$q',
-        function($http, $q) {
+        '$http', '$q','authenticationService',
+    function($http, $q, authenticationService) {
             var svc = {
                 save: function(item) {
                     var deferred = $q.defer();
+                    $http.defaults.headers.common['Authorization'] = 'Basic ' + authenticationService.GetCredentials();
                     $http.post('/api/Item', item)
                         .success(deferred.resolve)
                         .error(deferred.reject);
                     return deferred.promise;
                 },
                 getAll: function() {
+                    $http.defaults.headers.common['Authorization'] = 'Basic ' + authenticationService.GetCredentials();
                     var deferred = $q.defer();
                     $http.get('/api/Item')
                         .success(deferred.resolve)
@@ -22,6 +24,7 @@
                     return deferred.promise;
                 } ,
                 getById: function(id) {
+                    $http.defaults.headers.common['Authorization'] = 'Basic ' + authenticationService.GetCredentials();
                     var deferred = $q.defer();
                     $http.get('/api/Item/' + id)
                         .success(deferred.resolve)
@@ -29,6 +32,7 @@
                     return deferred.promise;
                 } ,
                 'delete': function (id) {
+                    $http.defaults.headers.common['Authorization'] = 'Basic ' + authenticationService.GetCredentials();
                     var deferred = $q.defer();
                     $http.delete('/api/Item/' + id)
                         .success(deferred.resolve)
