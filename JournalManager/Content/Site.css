@@ -6,6 +6,8 @@
 .panel  {
     margin-bottom: 10px;
 }
+
+
 .pa
 .bd {background-image:url('images/index_bg.png');
     width: 1000px;
@@ -26,6 +28,10 @@ textarea {
     max-width: 1080px;
     max-height: 500px;
 }
+input.form-control-search {
+    width: 300px;
+}
+
 textarea.form-control-small {
     height: 100px;
     width: 100%;

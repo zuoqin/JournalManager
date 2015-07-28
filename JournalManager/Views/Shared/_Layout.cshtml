@@ -37,24 +37,27 @@
     </nav>
 </div>
     -->
-    <div class="pull-right" data-ng-show="isLoggedIn"
-         data-ng-controller="itemsController">
-        <nav>
-            <ul id="menu">
-                <li><button ng-click="download()">Download</button></li>
-            </ul>
-        </nav>
-    </div>
+
 
     <div class="pull-right" 
          data-ng-controller="syncController">
         <nav>
-            <ul id="menu">
-                <li><button ng-click="sync()">Synchronize</button></li>
+            <ul class="nav navbar-nav">
+                <li><button class="btn" ng-click="sync()" >Upload</button></li>
             </ul>
         </nav>
     </div>
-    <div class="container" data-ng-show="isLoggedIn"
+    <div class="pull-right" data-ng-show="isLoggedIn"
+         data-ng-controller="itemsController">
+        <nav>
+            <ul class="nav navbar-nav">
+                <li><input type="text" class="form-control-search" id="usr"></li>
+                <li><button class="btn" ng-click="search()">Filter</button></li>
+                <li><button class="btn" ng-click="download()">Download</button></li>
+            </ul>
+        </nav>
+    </div>
+        <div class="container" data-ng-show="isLoggedIn"
          data-ng-controller="itemsController">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
