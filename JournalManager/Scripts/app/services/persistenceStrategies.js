@@ -11,7 +11,10 @@
                     var deferred = $q.defer();
                     $http.defaults.headers.common['Authorization'] = 'Basic ' + authenticationService.GetCredentials();
                     $http.post('/api/Item', item)
-                        .success(deferred.resolve)
+                        .success(function() {
+                                deferred.resolve();
+                            }
+                            )
                         .error(deferred.reject);
                     return deferred.promise;
                 },
@@ -50,7 +53,20 @@
         function ($q, localDBService, nullItem, dbModel) {
             var svc = {
                 dbModel: dbModel,
-                localDBService : localDBService,
+                localDBService: localDBService,
+                clearAll: function() {
+                    var deferred = $q.defer();
+                    localDBService.open(dbModel).then(function () {
+                        localDBService.clear(dbModel.objectStoreName).then(function (res) {
+                            if (res) {
+                                deferred.resolve(true);
+                            } else {
+                                deferred.reject("Unable to clear object store");
+                            }
+                        }, deferred.reject);
+                    }, deferred.reject);
+                    return deferred.promise;
+                },
                 save: function (item) {
                     var deferred = $q.defer();
                     localDBService.open(svc.dbModel).then(function(e) {
@@ -84,15 +100,20 @@
                     var deferred = $q.defer();
                     localDBService.open(svc.dbModel).then(function() {
                         localDBService.getById(svc.dbModel.objectStoreName, id)
-                            .then(deferred.resolve, deferred.reject);
+                            .then(function (res) {
+                                if (res) {
+                                    deferred.resolve(res);
+                                }
+                                    
+                                }, deferred.reject);
                     }, deferred.reject);
                     return deferred.promise;
                 },
                 exists: function(id) {
                     var deferred = $q.defer();
                     svc.getById(id).then(function (_Event) {
-                        var item = _Event.srcElement.result;
-                        if (item != undefined) {
+                        var item = _Event;
+                        if (item != undefined && item !== true) {
                             deferred.resolve(item.ItemId === id);
                         } else {
                             deferred.resolve(false);

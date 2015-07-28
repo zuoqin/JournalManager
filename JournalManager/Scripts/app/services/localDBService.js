@@ -147,9 +147,16 @@
                     var deferred = $q.defer();
                     _db.requireObjectStoreName(objectStoreName, deferred);
                     _db.requireOpenDB(objectStoreName, deferred);
-                    var store = _db.getObjectStore(objectStoreName),
-                        request = store.get(key);
-                    request.onsuccess = deferred.resolve;
+                    var store = _db.getObjectStore(objectStoreName);
+                    var request = store.get(key);
+                    request.onsuccess = function (e) {
+                        if (e.target.result != undefined) {
+                            deferred.resolve(e.target.result);
+                        } else {
+                            deferred.resolve(true);
+                        }
+                        
+                        }; 
                     return deferred.promise;
                 },
                 clear: function (objectStoreName) {

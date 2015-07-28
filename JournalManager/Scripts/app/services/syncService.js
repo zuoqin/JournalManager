@@ -42,13 +42,13 @@
                         localDBService.getAll(dbModel.objectStoreName).then(function (items) {
                             items.forEach(function(item) {
                                 remotePersistenceStrategy.save(item).then(function (result) {
-                                    if (result) {
-                                        localDBService.clear(dbModel.objectStoreName).then(function(res) {
+                                    //if (result) {
+                                    //    localDBService.clear(dbModel.objectStoreName).then(function(res) {
                                             deferred.resolve(true);
-                                        }, deferred.reject);
-                                    } else {
-                                        deferred.reject('Unable to clear object store');
-                                    }
+                                    //    }, deferred.reject);
+                                    //} else {
+                                    //    deferred.reject('Unable to clear object store');
+                                //    }
                                 }, deferred.reject);
                             });
 

@@ -1,21 +1,42 @@
 ﻿body {
-    padding-top: 100px;
+    padding-top: 10px;
     padding-bottom: 20px;
+    padding-top: 60px;
 }
- 
+.panel  {
+    margin-bottom: 10px;
+}
+.pa
+.bd {background-image:url('images/index_bg.png');
+    width: 1000px;
+    height: 1000px;
+     background-repeat:no-repeat}
+
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    margin-top: 30px;
 }
  
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
 textarea {
-    max-width: 280px;
+    max-width: 1080px;
+    max-height: 500px;
 }
- 
+textarea.form-control-small {
+    height: 100px;
+    width: 100%;
+}
+textarea.form-control-medium {
+    height: 355px;
+    width: 100%;
+} 
+textarea.form-control {
+    height: 1080px;
+}
 .navbar {
     background-color: #fff;
     padding-top: 15px;
@@ -33,9 +54,9 @@ textarea {
 }
  
 .home-list-item {
-    margin-top: 2em;
-    margin-bottom: 2em;
-    padding-bottom: 2em;
+    margin-top: 0em;
+    margin-bottom: 0em;
+    padding-bottom: 0em;
     border-bottom: 1px solid #eee;
 }
  

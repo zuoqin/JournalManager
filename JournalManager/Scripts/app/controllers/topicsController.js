@@ -28,7 +28,7 @@
                         $scope.error = error;
                     });
             };
-            var lazyGetData = _.debounce(getData, 5000);
+            var lazyGetData = _.debounce(getData, 1000);
             //Offline.on('confirmed-down', lazyGetData);
             //Offline.on('confirmed-up', lazyGetData);
             lazyGetData();
