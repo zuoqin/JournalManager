@@ -84,7 +84,9 @@
                 persistenceService.setAction(0);
                 lazyGetData();
             };
-
+            $scope.syncronize = function() {
+                
+            }
             $scope.delete = function(index) {
                 var id = $scope.items[index].ItemId;
                 persistenceService.action.delete(id).then(

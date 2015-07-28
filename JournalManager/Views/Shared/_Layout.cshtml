@@ -42,12 +42,18 @@
         <nav>
             <ul id="menu">
                 <li><button ng-click="download()">Download</button></li>
-                <li><button ng-click="syncronize()" >Synchronize</button></li>
             </ul>
         </nav>
     </div>
 
-
+    <div class="pull-right" 
+         data-ng-controller="syncController">
+        <nav>
+            <ul id="menu">
+                <li><button ng-click="sync()">Synchronize</button></li>
+            </ul>
+        </nav>
+    </div>
     <div class="container" data-ng-show="isLoggedIn"
          data-ng-controller="itemsController">
         <div class="navbar-header">
