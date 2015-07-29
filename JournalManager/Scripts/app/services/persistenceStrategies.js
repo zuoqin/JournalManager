@@ -49,10 +49,11 @@
 
     app.factory('localPersistenceStrategy',
     [
-        '$q', 'localDBService', 'nullItem', 'dbModel',
-        function ($q, localDBService, nullItem, dbModel) {
+        '$q', 'localDBService', 'nullItem', 'dbModel', 'dbUserModel',
+        function ($q, localDBService, nullItem, dbModel, dbUserModel) {
             var svc = {
                 dbModel: dbModel,
+                dbUserModel : dbUserModel,
                 localDBService: localDBService,
                 clearAll: function() {
                     var deferred = $q.defer();
@@ -107,6 +108,48 @@
                                     
                                 }, deferred.reject);
                     }, deferred.reject);
+                    return deferred.promise;
+                },
+                getUser: function (userName) {
+                    var deferred = $q.defer();
+                    localDBService.open(svc.dbUserModel).then(function () {
+                        localDBService.getUser(svc.dbUserModel.objectStoreName, userName)
+                            .then(function (res) {
+                                if (res) {
+                                    deferred.resolve(res);
+                                }
+                                    
+                            }, deferred.reject);
+                    }, deferred.reject);
+                    return deferred.promise;
+                },
+                setUser: function (user) {
+                    var deferred = $q.defer();
+                    localDBService.open(svc.dbUserModel).then(function(e) {
+                        var id = user.username;
+
+                        svc.userexists(id).then(function (doesExist) {
+                            if (doesExist) {
+                                localDBService.update(svc.dbUserModel.objectStoreName, user, id)
+                                    .then(deferred.resolve, deferred.reject);
+                            } else {
+                                localDBService.insert(svc.dbModel.objectStoreName, user, 'username')
+                                    .then(deferred.resolve, deferred.reject);
+                            }
+                        }, deferred.reject);
+                    }, deferred.reject);
+                    return deferred.promise;
+                },
+                userexists: function(username) {
+                    var deferred = $q.defer();
+                    svc.getUser(username).then(function (_Event) {
+                        var item = _Event;
+                        if (item != undefined && item !== true) {
+                            deferred.resolve(item.username === username);
+                        } else {
+                            deferred.resolve(false);
+                        }
+                    },deferred.reject);
                     return deferred.promise;
                 },
                 exists: function(id) {

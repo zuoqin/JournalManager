@@ -167,7 +167,34 @@
                     var request = store.clear();
                     request.onsuccess = deferred.resolve;
                     return deferred.promise;
-                }
+                },
+                getUser: function (objectStoreName, user) {
+                    var deferred = $q.defer();
+                    _db.requireObjectStoreName(objectStoreName, deferred);
+                    _db.requireOpenDB(objectStoreName, deferred);
+                    var store = _db.getObjectStore(objectStoreName);
+                    var request = store.get(user);
+                    request.onsuccess = function (e) {
+                        if (e.target.result != undefined) {
+                            deferred.resolve(e.target.result);
+                        } else {
+                            deferred.resolve(true);
+                        }
+                        
+                    }; 
+                    return deferred.promise;
+                },
+                setUser:function(objectStoreName, data) {
+                    var deferred = $q.defer();
+                    _db.requireObjectStoreName(objectStoreName, deferred);
+                    _db.requireOpenDB(objectStoreName, deferred);
+                    var store = _db.getObjectStore(objectStoreName, _db.transactionTypes.readwrite);
+                    var request = store.add(data);
+                    request.onsuccess = function() {
+                        deferred.resolve(data);
+                    };
+                    return deferred.promise;
+                },
             };
             return {
                 open: _db.open,
@@ -177,7 +204,9 @@
                 update: _db.update,
                 getById: _db.getById,
                 getCount: _db.getCount,
-                clear: _db.clear
+                clear: _db.clear,
+                getUser: _db.getUser,
+                setUser: _db.setUser
             };
         }]);
 }());

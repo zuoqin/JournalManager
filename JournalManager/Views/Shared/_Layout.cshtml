@@ -43,21 +43,21 @@
          data-ng-controller="syncController">
         <nav>
             <ul class="nav navbar-nav">
-                <li><button class="btn" ng-click="sync()" >Upload</button></li>
+                <li><button class="btn" data-ng-show="isLoggedIn" ng-click="sync()">Upload</button></li>
             </ul>
         </nav>
-    </div>
+    </div> <!--lass="pull-right" -->
     <div class="pull-right" data-ng-show="isLoggedIn"
          data-ng-controller="itemsController">
         <nav>
             <ul class="nav navbar-nav">
-                <li><input type="text" class="form-control-search" id="usr"></li>
-                <li><button class="btn" ng-click="search()">Filter</button></li>
-                <li><button class="btn" ng-click="download()">Download</button></li>
+                <li><input type="text" class="form-control-search" ng-model="filtertext"></li>
+                <li><button class="btn" ng-disabled="!showList" ng-click="search()">Filter</button></li>
+                <li><button class="btn" ng-disabled="!showList" ng-click="download()">Download</button></li>
             </ul>
         </nav>
-    </div>
-        <div class="container" data-ng-show="isLoggedIn"
+    </div> <!--class="pull-right"-->
+    <div class="container" data-ng-show="isLoggedIn"
          data-ng-controller="itemsController">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -74,8 +74,8 @@
                 <li><a href="/topics">Topics List</a></li>
             </ul>
         </div>
-    </div>
-</div>
+    </div> <!--class="container"-->
+</div> <!--class="navbar navbar-fixed-top"-->
 <div class="container body-content">
     @RenderBody()
     <hr/>
@@ -118,6 +118,7 @@
 <script src="~/Scripts/app/services/syncService.js" type="text/javascript"></script>
 <script src="~/Scripts/app/services/base64Service.js" type="text/javascript"></script>
 <script src="~/Scripts/app/services/authenticationService.js" type="text/javascript"></script>
+<script src="~/Scripts/app/services/usersLocalService.js" type="text/javascript"></script>
 <script src="~/Scripts/app/services/topicsService.js" type="text/javascript"></script>
 <script src="~/Scripts/app/controllers/syncController.js" type="text/javascript"></script>
 <script src="~/Scripts/app/controllers/loginController.js" type="text/javascript"></script>

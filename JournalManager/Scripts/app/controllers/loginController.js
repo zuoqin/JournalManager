@@ -45,7 +45,7 @@
             $scope.dataLoading = false;
             $scope.isLoggedIn = false;
             
-            $scope.items = [];
+            $rootScope.items = [];
             $scope.topics = [];
             authenticationService.logout();
             window.location.href = "/";

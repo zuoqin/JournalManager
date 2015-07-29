@@ -54,8 +54,13 @@
                 self.getLocalItem = function (id) {
                     return localPersistenceStrategy.getById(id);
                 };
-
-                self.getById = function(id) {
+                self.getUser = function (username) {
+                    return localPersistenceStrategy.getUser(username);
+                };
+                self.setUser = function (user) {
+                    return localPersistenceStrategy.setUser(user);
+                };
+                self.getById = function (id) {
                     var deferred = $q.defer();
                     //if (Offline.state === 'up') {
                     if (self.action === remotePersistenceStrategy) {

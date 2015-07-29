@@ -1,5 +1,5 @@
 ﻿CACHE MANIFEST
-# 2.2
+# 2.3
 
 CACHE:
 /
@@ -36,6 +36,7 @@ CACHE:
 /Scripts/app/services/syncService.js
 /Scripts/app/services/base64Service.js
 /Scripts/app/services/authenticationService.js
+/Scripts/app/services/usersLocalService.js
 /Scripts/app/controllers/syncController.js
 /Scripts/app/controllers/itemsController.js
 /Scripts/app/controllers/topicsController.js

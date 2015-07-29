@@ -17,7 +17,7 @@ angular.module('app', ['ngResource', 'ngCookies']).config(
             });
             $provide.value('dbModel', {
                 name: 'journalitems',
-                version: '1',
+                version: '1.1',
                 instance: null,
                 objectStoreName: 'items',
                 keyName: 'ItemId',
@@ -26,6 +26,21 @@ angular.module('app', ['ngResource', 'ngCookies']).config(
                     if (!db.objectStoreNames.contains('items')) {
                         db.createObjectStore('items', {
                             keyPath: 'ItemId'
+                        });
+                    }
+                }
+            });
+            $provide.value('dbUserModel', {
+                name: 'journalusers',
+                version: '1.1',
+                instance: null,
+                objectStoreName: 'users',
+                keyName: 'username',
+                upgrade: function (e) {
+                    var db = e.target.result;
+                    if (!db.objectStoreNames.contains('users')) {
+                        db.createObjectStore('users', {
+                            keyPath: 'username'
                         });
                     }
                 }

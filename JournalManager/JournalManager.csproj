@@ -294,6 +294,7 @@
     <Content Include="Scripts\app\services\persistenceStrategies.js" />
     <Content Include="Scripts\app\services\syncService.js" />
     <Content Include="Scripts\app\services\topicsService.js" />
+    <Content Include="Scripts\app\services\usersLocalService.js" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\angular-touch.min.js.map" />
     <Content Include="Scripts\angular-sanitize.min.js.map" />
