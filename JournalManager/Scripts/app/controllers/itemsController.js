@@ -99,7 +99,9 @@
                     var srch = $scope.filtertext;
                     if ($rootScope.items !== undefined) {
                         for (var i = 0 ; i < $rootScope.items.length ; i++) {
-                            if ($rootScope.items[i].Title.toString().indexOf(srch) > -1) {
+                            if ($rootScope.items[i].Title.toString().toLowerCase().indexOf(srch.toLowerCase()) > -1 ||
+                                $rootScope.items[i].Introduction.toString().toLowerCase().indexOf(srch.toLowerCase()) > -1 ||
+                                $rootScope.items[i].Contents.toString().toLowerCase().indexOf(srch.toLowerCase()) > -1) {
                                 items.push($rootScope.items[i]);
                             };
                         };
