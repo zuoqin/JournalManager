@@ -7,9 +7,9 @@
     function ($scope, $sce, _, persistenceService, Offline, authenticationService, $q,$rootScope) {
         $scope.showList = false;
         if (authenticationService.GetCredentials() != null && authenticationService.GetCredentials().length > 0) {
-            $scope.isLoggedIn = true;
+            $rootScope.isLoggedIn = true;
         } else {
-            $scope.isLoggedIn = false;
+            $rootScope.isLoggedIn = false;
         }
             var getData = function () {
                 $rootScope.items = [];
@@ -88,13 +88,14 @@
                 return deferred.promise;
             }
             $scope.download = function () {
-                $scope.showList = false;
+                $rootScope.showList = false;
                 persistenceService.setAction(0);
                 lazyGetData();
             };
 
             $scope.search = function () {
                 var items = [];
+                $rootScope.showList = false;
                 getData().then(function () {
                     var srch = $scope.filtertext;
                     if ($rootScope.items !== undefined) {

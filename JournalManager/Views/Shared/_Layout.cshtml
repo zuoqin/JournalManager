@@ -51,7 +51,7 @@
          data-ng-controller="itemsController">
         <nav>
             <ul class="nav navbar-nav">
-                <li><input type="text" class="form-control-search" ng-model="filtertext"></li>
+                <li><input type="text" class="form-control-search" placeholder="Search" ng-model="filtertext"></li>
                 <li><button class="btn" ng-disabled="!showList" ng-click="search()">Filter</button></li>
                 <li><button class="btn" ng-disabled="!showList" ng-click="download()">Download</button></li>
             </ul>
