@@ -7,6 +7,9 @@
     margin-bottom: 10px;
 }
 
+.pull-right {
+    padding-right: 0px;
+}
 .btnupload {
     background: url("uploadbtn.jpg") no-repeat;
     width: 90px;
@@ -20,7 +23,14 @@
 @media (min-width: 1200px) {
     .container {
         width: 100%;
+        .ngscope {
+            padding: 0px;
+        }
     }
+
+   .col-sm-12 {
+       padding: 0px;
+   }
 }
 .pa
 .bd {background-image:url('images/index_bg.png');
@@ -30,8 +40,8 @@
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 0px;
+    padding-right: 0px;
     margin-top: 30px;
 }
  
@@ -54,6 +64,10 @@ textarea.form-control-small {
     height: 100px;
     width: 100%;
 }
+form.form-horizontal {
+    padding-left: 15px;
+    padding-right: 15px;
+}
 textarea.form-control-medium {
     height: 355px;
     width: 100%;
@@ -65,6 +79,7 @@ textarea.form-control {
     background-color: #fff;
     padding-top: 15px;
     padding-bottom: 6px;
+    padding-right: 15px;
     -webkit-box-shadow: 0 0 5px 2px #ccc;
     box-shadow: 0 0 5px 2px #ccc;
 }
@@ -82,6 +97,8 @@ textarea.form-control {
     margin-bottom: 0em;
     padding-bottom: 0em;
     border-bottom: 1px solid #eee;
+    padding-left: 15px;
+    padding-right: 15px;
 }
  
 .offline-ui {
