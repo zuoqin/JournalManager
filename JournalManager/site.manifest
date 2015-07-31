@@ -1,5 +1,5 @@
 ﻿CACHE MANIFEST
-# 2.4
+# 2.5
 
 CACHE:
 /
@@ -9,6 +9,8 @@ CACHE:
 
 /Content/bootstrap.css
 /Content/site.css
+/Content/downloadbtn.jpg
+/Content/uploadbtn.jpg
 /Scripts/offline/themes/offline-theme-chrome.css
 /Scripts/offline/themes/offline-language-english.css
 
