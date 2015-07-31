@@ -5,7 +5,7 @@
     [
         '$scope','$sce', '_', 'persistenceService', 'Offline','authenticationService','$q','$rootScope',
     function ($scope, $sce, _, persistenceService, Offline, authenticationService, $q,$rootScope) {
-        $scope.showList = false;
+        $rootScope.showList = false;
         if (authenticationService.GetCredentials() != null && authenticationService.GetCredentials().length > 0) {
             $rootScope.isLoggedIn = true;
         } else {
@@ -13,7 +13,7 @@
         }
             var getData = function () {
                 $rootScope.items = [];
-                $scope.showList = false;
+                $rootScope.showList = false;
                 $scope.thisList = false;
                 var deferred = $q.defer();
                 if( authenticationService.GetCredentials() != null && authenticationService.GetCredentials().length > 0) {
@@ -64,7 +64,7 @@
                             }
 
                             deferred.resolve(true);
-                            $scope.showList = true;
+                            $rootScope.showList = true;
                             $scope.showEmptyListMessage = (items.length === 0);
 
 

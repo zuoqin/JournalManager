@@ -43,12 +43,21 @@
          data-ng-controller="syncController">
         <nav>
             <ul class="nav navbar-nav">
-                <li><button class="btnupload" data-ng-show="isLoggedIn" ng-click="sync()"></button></li>
+                <li><button class="btnupload" data-ng-show="isLoggedIn" ng-disabled="!showList" ng-click="sync()"></button></li>
+                
+            </ul>
+        </nav>
+    </div> <!--lass="pull-right" -->
+    <div class="pull-right"
+         data-ng-controller="itemsController">
+        <nav>
+            <ul class="nav navbar-nav">
+
                 <li><button class="btndownload" ng-disabled="!showList" ng-click="download()"></button></li>
             </ul>
         </nav>
     </div> <!--lass="pull-right" -->
-    <div class="pull-right" data-ng-show="isLoggedIn"
+        <div class="pull-right" data-ng-show="isLoggedIn"
          data-ng-controller="itemsController">
         <input type="text" id="tfq" class="tftextinput2" name="q" size="21" maxlength="120" value="Search" ng-model="filtertext"><input type="submit" value=">" ng-click="search()"  class="tfbutton2">
     <!--
@@ -69,11 +78,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="/"><img src="/images/logo-sm.png" class="logo" alt="Journal Items" title="Journal Items" /></a>
+            <a href="/items"><img src="/images/logo-sm.png" class="logo" alt="Journal Items" title="Journal Items" /></a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="/items">Items List</a></li>
+                <!--
+                <li><a href="/items">Items List</a></li>-->
                 <li><a href="/items/new">New Item</a></li>
                 <!--
                 <li><a href="/topics">Topics List</a></li>-->

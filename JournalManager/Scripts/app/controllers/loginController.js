@@ -6,7 +6,7 @@
         '$scope', '$rootScope', '$location', 'authenticationService',
         function ($scope, $rootScope, $location, authenticationService) {
         //authenticationService.ClearCredentials();
-        $scope.showList = true;
+            $rootScope.showList = true;
         if( authenticationService.GetCredentials() != null && authenticationService.GetCredentials().length > 0) {
             $scope.isLoggedIn = true;
         } else {

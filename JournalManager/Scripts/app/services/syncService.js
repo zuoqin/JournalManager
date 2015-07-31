@@ -36,7 +36,8 @@
                     });
                     return deferred.promise;
                 },
-                sync: function() {
+                sync: function () {
+                    var stored = [];
                     var deferred = $q.defer();
                     localDBService.open(dbModel).then(function() {
                         localDBService.getAll(dbModel.objectStoreName).then(function (items) {
@@ -44,14 +45,17 @@
                                 remotePersistenceStrategy.save(item).then(function (result) {
                                     //if (result) {
                                     //    localDBService.clear(dbModel.objectStoreName).then(function(res) {
-                                            deferred.resolve(true);
+                                    stored.push(1);
+                                    if (stored.length == items.length) {
+                                        deferred.resolve(true);
+                                    }
                                     //    }, deferred.reject);
                                     //} else {
                                     //    deferred.reject('Unable to clear object store');
-                                //    }
+                                    //    }
                                 }, deferred.reject);
                             });
-
+                            
                         }, deferred.reject);
                     }, deferred.reject);
                     return deferred.promise;

@@ -3,17 +3,17 @@
     var app = angular.module('app');
     app.controller('syncController',
     [
-        '$scope', '$timeout', 'syncService','authenticationService',
-        function ($scope, $timeout, syncService, authenticationService) {
+        '$rootScope', '$scope', '$timeout', 'syncService','authenticationService',
+        function ($rootScope, $scope, $timeout, syncService, authenticationService) {
             if (authenticationService.GetCredentials() != null && authenticationService.GetCredentials().length > 0) {
-                $scope.isLoggedIn = true;
+                $rootScope.isLoggedIn = true;
             } else {
-                $scope.isLoggedIn = false;
+                $rootScope.isLoggedIn = false;
             }
             syncService.monitorUp().then(
                 function(result) {
                     $timeout(function() {
-                        $scope.hasLocalDataToSync = result;
+                        $rootScope.hasLocalDataToSync = result;
                     });
                 },
                 function(error) {
@@ -22,31 +22,32 @@
             syncService.monitorDown().then(
                 function (result) {
                     $timeout(function () {
-                        $scope.hasLocalDataToSync = false;//result;
+                        $rootScope.hasLocalDataToSync = false;//result;
                     });
                 },
                 function (error) {
-                    $scope.error = error;
+                    $rootScope.error = error;
                 });
             $scope.sync = function () {
-                $scope.showList = false;
+                $rootScope.showList = false;
                 syncService.sync().then(
-                    function(result) {
-                        $scope.hasLocalDataToSync = false;
+                    function (result) {
+                        $rootScope.showList = true;
+                        $rootScope.hasLocalDataToSync = false;
                     },
                     function(error) {
-                        $scope.error = error;
+                        $rootScope.error = error;
                     });
             }
 
             syncService.check().then(
                 function(result) {
                     $timeout(function() {
-                        $scope.hasLocalDataToSync = result;
+                        $rootScope.hasLocalDataToSync = result;
                     });
                 },
                 function(error) {
-                    $scope.error = error;
+                    $rootScope.error = error;
                 });
         }]);
 }());

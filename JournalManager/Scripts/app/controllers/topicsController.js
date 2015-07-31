@@ -5,7 +5,7 @@
     [
         '$scope','$sce', '_', 'topicsService',
         function($scope, $sce, _, topicsService) {
-            $scope.showList = false;
+            $rootScope.showList = false;
             $scope.topics = [];
             var getData = function () {
                 topicsService.getAll().then(
@@ -21,7 +21,7 @@
 
 
                         //$scope.items = items;
-                        $scope.showList = true;
+                        $rootScope.showList = true;
                         $scope.showEmptyListMessage = (topics.length === 0);
                     },
                     function (error) {
