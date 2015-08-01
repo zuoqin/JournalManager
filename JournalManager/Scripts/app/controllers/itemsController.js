@@ -78,7 +78,10 @@
             var lazyGetData = _.debounce(getData, 1000);
             //Offline.on('confirmed-down', lazyGetData);
             //Offline.on('confirmed-up', lazyGetData);
-            lazyGetData();
+            //if ($rootScope.showList === true) {
+                lazyGetData();
+            //}
+            
             var waitTimeout = function() {
                 var deferred = $q.defer();
                 setTimeout(function () {
