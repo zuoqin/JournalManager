@@ -3,12 +3,14 @@
     var app = angular.module('app');
     app.controller('editController',
     [
-        '$scope', '$location', 'persistenceService', 'Offline',
-        function ($scope, $location, persistenceService, Offline) {
+        '$scope', '$rootScope', '$location', 'persistenceService', 'Offline',
+        function ($scope, $rootScope, $location, persistenceService, Offline) {
             $scope.showSuccessMessage = false;
             $scope.showFillOutFormMessage = false;
             $scope.isOnline = true;
             $scope.item = {};
+            $rootScope.showList = false;
+            $rootScope.showItems = false;
 
             var parts = $location.absUrl().split('/');
             var id = parts[parts.length - 1];
@@ -27,7 +29,7 @@
             }
 
             $scope.cancel = function() {
-                window.location = '/';
+                window.location = '/items';
             };
 
             var hasAnItemToSave = function() {

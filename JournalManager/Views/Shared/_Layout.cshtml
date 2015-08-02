@@ -43,7 +43,7 @@
          data-ng-controller="syncController">
         <nav>
             <ul class="nav navbar-nav">
-                <li><button class="btnupload" data-ng-show="isLoggedIn" ng-disabled="!showList" ng-click="sync()"></button></li>
+                <li><button class="btnupload"  data-ng-show="showItems" ng-disabled="!showList" ng-click="sync()"></button></li>
                 
             </ul>
         </nav>
@@ -57,8 +57,8 @@
         <nav>
 
             <ul class="nav navbar-nav">
-                <li><input type="text" id="tfq" class="tftextinput2" name="q" size="21" maxlength="120" value="Search" ng-model="filtertext"><input type="submit" value=" > " ng-click="search()" class="tfbutton2"></li>
-                <li><button class="btndownload" ng-disabled="!showList" ng-click="download()"></button></li>
+                <li><input type="text" id="tfq" data-ng-show="showItems"  class="tftextinput2" name="q" size="21" maxlength="120" value="Search" ng-model="filtertext"><input type="submit" data-ng-show="showItems"  value=" > " ng-click="search()" class="tfbutton2"></li>
+                <li><button class="btndownload" ng-disabled="!showList" data-ng-show="showItems" ng-click="download()"></button></li>
             </ul>
         </nav>
     </div> <!--class="pull-right"-->

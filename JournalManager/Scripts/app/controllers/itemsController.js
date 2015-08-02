@@ -6,11 +6,13 @@
         '$scope','$sce', '_', 'persistenceService', 'Offline','authenticationService','$q','$rootScope',
     function ($scope, $sce, _, persistenceService, Offline, authenticationService, $q,$rootScope) {
         $rootScope.showList = false;
+        $rootScope.showItems = true;
         if (authenticationService.GetCredentials() != null && authenticationService.GetCredentials().length > 0) {
             $rootScope.isLoggedIn = true;
         } else {
             $rootScope.isLoggedIn = false;
             $rootScope.showList = true;
+            $rootScope.showItems = false;
         }
             var getData = function () {
                 $rootScope.items = [];
@@ -72,6 +74,7 @@
 
                             deferred.resolve(true);
                             $rootScope.showList = true;
+                            
                             $scope.showEmptyListMessage = (items.length === 0);
 
 
@@ -85,9 +88,9 @@
             var lazyGetData = _.debounce(getData, 1000);
             //Offline.on('confirmed-down', lazyGetData);
             //Offline.on('confirmed-up', lazyGetData);
-            //if ($rootScope.showList === true) {
+            if ($rootScope.showItems === true) {
                 lazyGetData();
-            //}
+            }
             
             var waitTimeout = function() {
                 var deferred = $q.defer();

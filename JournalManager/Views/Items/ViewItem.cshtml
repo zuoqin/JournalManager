@@ -26,6 +26,10 @@
                     <a data-ng-href="/items/edit/{{item.ItemId}}" class="btn btn-default">Edit</a>
                     -->
                     <p ng-bind-html="item.Contents">{{item.Contents}}</p>
+
+
+                    <input type="button" data-ng-click="edit()" value="Edit" class="btn btn-default btn-primary" />
+
                 </div>
             </div>
         </div>

@@ -42,7 +42,7 @@
                 <div class="panel-body">
                     <p ng-bind-html="item.Introduction">{{item.Introduction}}</p>
                     <p>
-                        on {{item.modifiedDate}}
+                        on {{item.modifiedDate.toLocaleString()}}
                     </p>
                     <button class="btn btn-link" data-ng-click="delete($index)">Delete</button>
                     <a data-ng-href="/items/edit/{{item.ItemId}}" class="btn btn-default">Edit</a>
