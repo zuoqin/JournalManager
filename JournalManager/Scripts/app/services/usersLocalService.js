@@ -17,7 +17,10 @@
             key: 'journalusers.data',
 
             serializeData: function () {
-                localStorage[svc.key] = JSON.stringify(svc.data);
+                if (svc.data !== undefined && svc.data !== null) {
+                    localStorage[svc.key] = JSON.stringify(svc.data);
+                }
+                
             },
 
             deserializeData: function (data) {
@@ -32,7 +35,7 @@
 
     
 
-                    var
+                    /*var
                         counter = 0,
                         users = [];
 
@@ -44,18 +47,26 @@
                             username: 'zuoqin',
                             password: 'Qwerty123'
                         };
-                    }
+                    }*/
 
-                    return users;
+                    return undefined;//users;
                 };
 
-                if (data != undefined) {
-                    svc.deserializeData(data);
+                if (data !== undefined) {
+                    if (data === "undefined") {
+                        localStorage.clear();//removeItem(svc.key);
+                        svc.data = localStorage[svc.key];
+                    } else {
+                        svc.deserializeData(data);
+                    }
+                    
                 }
+                if (svc.data !== undefined && svc.data !== null) {
+                    if (svc.data.length === 0) {
+                        svc.data = generateSeedData();
+                        svc.serializeData();
+                    }
 
-                if (svc.data.length === 0) {
-                    svc.data = generateSeedData();
-                    svc.serializeData();
                 }
             },
 
@@ -64,7 +75,7 @@
                 var isNew = false;//svc.getById(user.username).username === nullHome.id;
 
                 if (isNew) {
-                    svc.insert(home);
+                    svc.insert(user);
                 } else {
                     svc.update(user);
                 }
@@ -73,7 +84,9 @@
             insert: function (user) {
 
                 if (!_.isObject(user)) throw new Error('A home object is required to do an insert.');
-
+                if (svc.data === undefined || svc.data === null) {
+                    svc.data = [];
+                }
                 svc.data.unshift(user);
                 svc.serializeData();
             },
@@ -101,22 +114,33 @@
                 svc.serializeData();
 
             },
-            getUser : function() {
-                return svc.data[0];
+            getUser: function () {
+                if (svc.data !== undefined && svc.data !== null ) {
+                    if (svc.data.length > 0) {
+                        return svc.data[0];
+                    }
+                    return undefined;
+                }
+                return undefined;
             },
             getById: function (username) {
 
                 var returnValue = null;
+                if (svc.data !== undefined && svc.data !== null) {
+                    svc.data.forEach(function (user) {
+                        if (user.username === username) {
+                            returnValue = user;
+                        }
+                    });
 
-                svc.data.forEach(function (user) {
-                    if (user.username === username) {
-                        returnValue = user;
-                    }
-                });
+                }
 
                 return returnValue;
             },
 
+            removeAll: function() {
+                localStorage.clear();//.removeItem(svc.key);
+            },
             'delete': function (username) {
 
 
@@ -144,7 +168,8 @@
             update: svc.update,
             save: svc.save,
             getById: svc.getById,
-            getUser: svc.getUser
+            getUser: svc.getUser,
+            removeAll: svc.removeAll
         };
 
     }]);

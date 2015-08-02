@@ -9,6 +9,7 @@
                 $rootScope.isLoggedIn = true;
             } else {
                 $rootScope.isLoggedIn = false;
+                $rootScope.showList = true;
             }
             syncService.monitorUp().then(
                 function(result) {

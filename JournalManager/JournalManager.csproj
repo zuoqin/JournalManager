@@ -224,6 +224,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\downloadbtn.jpg" />
     <Content Include="Content\images\index_bg.png" />
+    <Content Include="Content\logoutbtn.jpg" />
     <Content Include="Content\uploadbtn.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

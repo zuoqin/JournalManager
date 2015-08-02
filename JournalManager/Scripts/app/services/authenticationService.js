@@ -25,7 +25,8 @@
                         var response = { success: username === 'zuoqin' && password === 'Qwerty123' };
                         var deferred = $q.defer();
                         if (username === 'zuoqin') {
-                            if (UsersLocalServerService.getById(username) === undefined)
+                            var user = UsersLocalServerService.getById(username);
+                            if (user === undefined || user === null)
                                 UsersLocalServerService.insert({ username: username, password: password });
                             callback(response);
                             //localDBService.open(service.dbUserModel).then(function () {
@@ -68,6 +69,7 @@
                         $cookies.remove('globals');
                         $http.defaults.headers.common.Authorization = 'Basic ';
                         $window.sessionStorage.removeItem('user');
+                        UsersLocalServerService.removeAll();
                     },
                     GetCredentials : function () {
                         if ($window.sessionStorage.getItem('user') != null) {

@@ -6,23 +6,25 @@
         '$scope', '$rootScope', '$location', 'authenticationService',
         function ($scope, $rootScope, $location, authenticationService) {
         //authenticationService.ClearCredentials();
-            $rootScope.showList = true;
+            $rootScope.showList = false;
         if( authenticationService.GetCredentials() != null && authenticationService.GetCredentials().length > 0) {
-            $scope.isLoggedIn = true;
+            $rootScope.isLoggedIn = true;
         } else {
-            $scope.isLoggedIn = false;
+            $rootScope.isLoggedIn = false;
+            $rootScope.showList = true;
         }
-        $scope.showEmptyListMessage = false;
+        $rootScope.showEmptyListMessage = false;
 
 
         $scope.login = function () {
-            $scope.dataLoading = true;
-            $scope.isLoggedIn = false;
+            $rootScope.dataLoading = true;
+            $rootScope.isLoggedIn = false;
+            $rootScope.showList = true;
             authenticationService.Login($scope.username, $scope.password, function (response) {
                 if (response.success) {
                     authenticationService.SetCredentials($scope.username, $scope.password);
-                    $scope.dataLoading = false;
-                    $scope.isLoggedIn = true;
+                    $rootScope.dataLoading = false;
+                    $rootScope.isLoggedIn = true;
                     //$rootScope.$apply(function () {
 
                         //$location.path('/Items');
@@ -32,21 +34,26 @@
                     //});
                     //$location.path("/");
                 } else {
-                    $scope.error = response.message;
-                    $scope.dataLoading = false;
+                    $rootScope.error = response.message;
+                    $rootScope.dataLoading = false;
                 }
                 
             });
         };
 
-
+        $scope.tologin = function () {
+            $rootScope.dataLoading = true;
+            $rootScope.isLoggedIn = false;
+            $rootScope.showList = true;
+            window.location.href = "/Account/Login";
+        };
 
         $scope.logout = function () {
-            $scope.dataLoading = false;
-            $scope.isLoggedIn = false;
+            $rootScope.dataLoading = false;
+            $rootScope.isLoggedIn = false;
             
             $rootScope.items = [];
-            $scope.topics = [];
+            $rootScope.topics = [];
             authenticationService.logout();
             window.location.href = "/";
         };

@@ -20,6 +20,17 @@
     width: 89px;
     height: 32px;
 }
+.btnlogout {
+    background: url("logoutbtn.jpg") no-repeat;
+    width: 90px;
+    height: 32px;
+}
+.btnlogin {
+    background: url("loginbtn.jpg") no-repeat;
+    width: 90px;
+    height: 32px;
+}
+
 @media (min-width: 1200px) {
     .container {
         width: 100%;

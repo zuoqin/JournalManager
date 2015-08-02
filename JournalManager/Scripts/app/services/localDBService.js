@@ -103,8 +103,11 @@
                     var store = _db.getObjectStore(objectStoreName, _db.transactionTypes.readwrite);
                     var request;
                     var date = new Date();
-                    data.insertDate = date;
-                    data.modifiedDate = date;
+                    if(data.insertDate === undefined)
+                        data.insertDate = date;
+
+                    if (data.modifiedDate === undefined)
+                        data.modifiedDate = date;
                     if (!data[keyName]) {
                         data[keyName] = Math.uuid();
                     }

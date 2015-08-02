@@ -22,21 +22,21 @@
     <div class="pull-right" data-ng-hide="isLoggedIn"
          data-ng-controller="loginController">
         <nav>
-            <ul id="menu">
-                <li>@Html.ActionLink("Login", "Login", "Account")</li>
+            <ul class="nav navbar-nav">
+                <li><button class="btnlogin" data-ng-hide="isLoggedIn" ng-click="tologin()"></button></li>
             </ul>
         </nav>
     </div>
-<!--
+
 <div class="pull-right" data-ng-show="isLoggedIn"
      data-ng-controller="loginController">
     <nav>
-        <ul id="menu">
-            <li><button ng-click="logout()">Logout</button></li>
+        <ul class="nav navbar-nav">
+            <li><button class="btnlogout" data-ng-show="isLoggedIn" ng-click="logout()"></button></li>
         </ul>
     </nav>
 </div>
-    -->
+
 
 
     <div class="pull-right" 

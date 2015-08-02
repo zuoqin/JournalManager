@@ -10,6 +10,7 @@
             $rootScope.isLoggedIn = true;
         } else {
             $rootScope.isLoggedIn = false;
+            $rootScope.showList = true;
         }
             var getData = function () {
                 $rootScope.items = [];
@@ -23,6 +24,9 @@
                                 persistenceService.ClearLocalDB().then(
                                     function() {
                                         persistenceService.setAction(1);
+                                        items.sort(function(a, b) {
+                                            return new Date(b.modifiedDate) - new Date(a.modifiedDate);
+                                        });
                                         items.forEach(function (item) {
                                             //if (persistenceService.getAction() === 0) {
                                             persistenceService.action.save(item).then(
@@ -44,6 +48,9 @@
                                     );
                                 
                             } else {
+                                items.sort(function (a, b) {
+                                    return new Date(b.modifiedDate) - new Date(a.modifiedDate);
+                                });
                                 items.forEach(function (item) {
                                     $rootScope.items.push({
                                         ItemId: item.ItemId,
@@ -55,7 +62,7 @@
                                         Contents: $sce.trustAsHtml(item.Contents)
                                     });
                                     //if (persistenceService.getAction() === 0) {
-                                    persistenceService.action.save(item);
+                                    //persistenceService.action.save(item);
 
                                     //}
                                 });
