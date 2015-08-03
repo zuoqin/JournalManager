@@ -1,5 +1,5 @@
 ﻿CACHE MANIFEST
-# 2.12
+# 2.13
 
 CACHE:
 /
@@ -11,6 +11,7 @@ CACHE:
 /Content/site.css
 /Content/downloadbtn.jpg
 /Content/logoutbtn.jpg
+/Content/loginbtn.jpg
 /Content/uploadbtn.jpg
 /Scripts/offline/themes/offline-theme-chrome.css
 /Scripts/offline/themes/offline-language-english.css

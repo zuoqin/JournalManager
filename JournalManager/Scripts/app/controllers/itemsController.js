@@ -37,7 +37,7 @@
                                                         ItemId: item.ItemId,
                                                         Title: $sce.trustAsHtml(item.Title),
                                                         Introduction: $sce.trustAsHtml(item.Introduction),
-                                                        modifiedDate: item.modifiedDate,
+                                                        modifiedDate: new Date(item.modifiedDate),
                                                         TopicId: item.TopicId,
                                                         UserId: item.UserId,
                                                         Contents: $sce.trustAsHtml(item.Contents)
@@ -58,7 +58,7 @@
                                         ItemId: item.ItemId,
                                         Title: $sce.trustAsHtml(item.Title),
                                         Introduction: $sce.trustAsHtml(item.Introduction),
-                                        modifiedDate: item.modifiedDate,
+                                        modifiedDate: new Date(item.modifiedDate),
                                         TopicId: item.TopicId,
                                         UserId: item.UserId,
                                         Contents: $sce.trustAsHtml(item.Contents)
